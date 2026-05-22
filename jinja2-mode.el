@@ -353,15 +353,15 @@
  jinja2-mode
  html-mode
  "Jinja2"
- "Major mode for editing jinja2 files"
+ "Major mode for editing jinja2 files."
  :group
  'jinja2
  (modify-syntax-entry ?\' "\"" sgml-mode-syntax-table)
- (set (make-local-variable 'comment-start) "{#")
- (set (make-local-variable 'comment-start-skip) "{#")
- (set (make-local-variable 'comment-end) "#}")
- (set (make-local-variable 'comment-end-skip) "#}")
- (set (make-local-variable 'indent-line-function) 'jinja2-indent-line)
+ (setq-local comment-start "{#")
+ (setq-local comment-start-skip "{#")
+ (setq-local comment-end "#}")
+ (setq-local comment-end-skip "#}")
+ (setq-local indent-line-function #'jinja2-indent-line)
  (setq-local font-lock-defaults
              '((jinja2-font-lock-keywords
                 jinja2-font-lock-keywords-1
@@ -369,16 +369,13 @@
                 jinja2-font-lock-keywords-3)
                nil t nil nil))
 
+ (when jinja2-enable-indent-on-save
+   (add-hook 'after-save-hook #'jinja2-indent-buffer nil t))
+
  (define-key jinja2-mode-map (kbd "C-c c") 'jinja2-close-tag)
  (define-key jinja2-mode-map (kbd "C-c t") 'jinja2-insert-tag)
  (define-key jinja2-mode-map (kbd "C-c v") 'jinja2-insert-var)
  (define-key jinja2-mode-map (kbd "C-c #") 'jinja2-insert-comment))
-
-(when jinja2-enable-indent-on-save
-  (add-hook
-   'jinja2-mode-hook
-   (lambda ()
-     (add-hook 'after-save-hook 'jinja2-indent-buffer nil 'make-it-local))))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.jinja2\\'" . jinja2-mode))
