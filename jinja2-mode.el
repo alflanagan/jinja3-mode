@@ -2,8 +2,9 @@
 
 ;; Copyright (C) 2011-2022 Florian Mounier aka paradoxxxzero
 
-;; Author: Florian Mounier aka paradoxxxzero
-;; Version: 0.3
+;; Original Author: Florian Mounier aka paradoxxxzero
+;; Author: A Lloyd Flanagan <lloyd.flanagan@pm.me>
+;; Version: 0.4
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,13 +21,13 @@
 
 ;;; Commentary:
 
-;;   This is an emacs major mode for jinja2 with:
+;;   This is an Emacs major mode for jinja2 with:
 ;;        syntax highlighting
 ;;        sgml/html integration
 ;;        indentation (working with sgml)
 ;;        more to come
 
-;; This file comes from http://github.com/paradoxxxzero/jinja2-mode
+;; This file comes from https://github.com/alflanagan/jinja2-mode.git
 
 ;;; Code:
 
@@ -38,12 +39,12 @@
   :group 'languages)
 
 (defcustom jinja2-user-keywords nil
-  "Custom keyword names"
+  "Custom keyword names."
   :type '(repeat string)
   :group 'jinja2)
 
 (defcustom jinja2-user-functions nil
-  "Custom function names"
+  "Custom function names."
   :type '(repeat string)
   :group 'jinja2)
 
@@ -92,6 +93,7 @@
      "urlize" "wordcount" "wordwrap" "xmlattr")))
 
 (defun jinja2-find-open-tag ()
+  "Search backward recursively for a Jinja2 open tag."
   (if (search-backward-regexp
        (rx-to-string
         `(and "{%"
@@ -131,7 +133,7 @@
   (save-excursion (jinja2-indent-line)))
 
 (defun jinja2-insert-tag ()
-  "Insert an empty tag"
+  "Insert an empty tag."
   (interactive)
   (insert "{% ")
   (save-excursion
@@ -139,7 +141,7 @@
     (jinja2-indent-line)))
 
 (defun jinja2-insert-var ()
-  "Insert an empty tag"
+  "Insert an empty variable tag."
   (interactive)
   (insert "{{ ")
   (save-excursion
@@ -147,7 +149,7 @@
     (jinja2-indent-line)))
 
 (defun jinja2-insert-comment ()
-  "Insert an empty tag"
+  "Insert an empty comment tag."
   (interactive)
   (insert "{# ")
   (save-excursion
@@ -163,7 +165,9 @@
            )
           (* whitespace)
           "#}")
-     . (1 font-lock-comment-face t))))
+     . (1 font-lock-comment-face t)))
+    "An rx to match a comment and set the the font-lock (syntax highlight)."
+)
 
 (defconst jinja2-font-lock-keywords-1
   (append
