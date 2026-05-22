@@ -1,6 +1,7 @@
 # Jinja2 mode for Emacs
 
 Copyright (C) 2011 Florian Mounier aka paradoxxxzero
+
 New work Copyright (C) 2026 A Lloyd Flanagan <lloyd.flanagan@pm.me>
 
 This program is free software: you can redistribute it and/or modify it under
@@ -16,7 +17,8 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <http://www.gnu.org/licenses/>.
 
 Original Author: Florian Mounier aka paradoxxxzero
-Author: A Lloyd Flanagan <lloyd.flanagan@pm.me>
+
+Additional work by: A Lloyd Flanagan <lloyd.flanagan@pm.me>
 
 Description :
 
