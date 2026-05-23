@@ -21,3 +21,4 @@ prompts). The prompts are in sequential order.
    @jinja2-mode.el which do not have any.
 7. Check documentation to determine if jinja2-closing-keywords is
    missing any keywords.
+8. Develop a test suite for jinja2-mode using buttercup.

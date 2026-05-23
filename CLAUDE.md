@@ -75,11 +75,29 @@ adapt accordingly.
 
 ## Testing
 
-No test suite exists yet. The plan is to add ERT-based tests. Conventional
-location for Emacs package tests is a `test/` directory with files named
-`jinja2-mode-test.el`. Run tests with:
+Tests use [buttercup](https://github.com/jorgenschaefer/emacs-buttercup)
+and live in `test/jinja2-mode-test.el`. Buttercup is declared as a
+development dependency in the `Cask` file, so [Cask](https://cask.readthedocs.io/)
+provides the sandboxed environment.
+
+Install the test dependencies once:
 
 ```
-emacs -Q -batch -L . -l jinja2-mode.el -l test/jinja2-mode-test.el \
-      -f ert-run-tests-batch-and-exit
+cask install
 ```
+
+Run the suite:
+
+```
+cask exec buttercup -L .
+```
+
+`cask exec buttercup -L .` discovers the `test/` directory automatically
+and runs every spec in it. Cask installs packages under `.cask/`, which
+the `.gitignore` excludes.
+
+The suite covers the keyword-list functions, font-lock highlighting,
+indentation, tag closing/insertion, and mode setup. Buttercup specs use
+`describe`/`it`/`expect`; helper macros at the top of the test file
+(`jinja2-test--in-buffer`, `jinja2-test--reindent`, `jinja2-test--face-of`)
+set up `jinja2-mode` buffers for the assertions.
