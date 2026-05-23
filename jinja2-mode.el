@@ -54,6 +54,11 @@
 ;;   :group 'jinja2)
 
 (defun jinja2-closing-keywords ()
+  "Return the list of Jinja2 block keywords that take an `end' counterpart.
+
+These are the keywords for which `jinja2-close-tag' will insert a matching
+`{% end<keyword> %}' tag (e.g., `{% if %}' → `{% endif %}').
+Any entries in `jinja2-user-keywords' are prepended to the built-in list."
   (append
    jinja2-user-keywords
    '("if"
@@ -68,9 +73,13 @@
      "call")))
 
 (defun jinja2-indenting-keywords ()
+  "Return all Jinja2 keywords that affect indentation."
   (append (jinja2-closing-keywords) '("else" "elif")))
 
 (defun jinja2-builtin-keywords ()
+  "Return the list of Jinja2 built-in keyword names.
+
+These are highlighted with `font-lock-builtin-face' in `jinja2-mode'."
   '("as"
     "autoescape"
     "debug"
@@ -116,6 +125,7 @@
     "scoped"))
 
 (defun jinja2-functions-keywords ()
+  "Return the list of Jinja2 built-in filter and function names."
   (append
    jinja2-user-functions
    '("abs"
@@ -284,8 +294,8 @@
           (save-excursion indent-col)
         indent-col))))
 
-(defun jinja2-calculate-indent-backward (default)
-  "Return indent column based on previous lines"
+(defun jinja2-calculate-indent-backward ()
+  "Return indent column based on previous lines."
   (let ((indent-width sgml-basic-offset)
         (default (sgml-indent-line-num)))
     (forward-line -1)
@@ -309,7 +319,7 @@
 
 
 (defun jinja2-calculate-indent ()
-  "Return indent column"
+  "Return indent column."
   (if (bobp) ; Check beginning of buffer
       0
     (let ((indent-width sgml-basic-offset)
@@ -330,10 +340,10 @@
               (- (current-indentation) indent-width)))
         (if (looking-at "^[ \t]*</") ; Assume sgml end block trust sgml
             default
-          (save-excursion (jinja2-calculate-indent-backward default)))))))
+          (save-excursion (jinja2-calculate-indent-backward)))))))
 
 (defun jinja2-indent-line ()
-  "Indent current line as Jinja code"
+  "Indent current line as Jinja code."
   (interactive)
   (let ((old_indent (current-indentation))
         (old_point (point)))
@@ -345,6 +355,7 @@
       indent)))
 
 (defun jinja2-indent-buffer ()
+  "Re-indent every line in the current buffer using `jinja2-indent-line'."
   (interactive)
   (save-excursion (indent-region (point-min) (point-max))))
 
