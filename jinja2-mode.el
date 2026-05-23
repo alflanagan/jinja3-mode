@@ -69,6 +69,7 @@ Any entries in `jinja2-user-keywords' are prepended to the built-in list."
      "if"
      "macro"
      "raw"
+     "set"
      "trans"
      "with")))
 

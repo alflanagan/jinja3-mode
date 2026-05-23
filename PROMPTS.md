@@ -19,3 +19,5 @@ prompts). The prompts are in sequential order.
    write a brief commit message for all 3 fixes.
 6. Write documentation strings for functions in
    @jinja2-mode.el which do not have any.
+7. Check documentation to determine if jinja2-closing-keywords is
+   missing any keywords.
