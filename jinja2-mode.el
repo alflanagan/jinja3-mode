@@ -61,16 +61,16 @@ These are the keywords for which `jinja2-close-tag' will insert a matching
 Any entries in `jinja2-user-keywords' are prepended to the built-in list."
   (append
    jinja2-user-keywords
-   '("if"
-     "for"
+   '("autoescape"
      "block"
+     "call"
      "filter"
-     "with"
-     "raw"
+     "for"
+     "if"
      "macro"
-     "autoescape"
+     "raw"
      "trans"
-     "call")))
+     "with")))
 
 (defun jinja2-indenting-keywords ()
   "Return all Jinja2 keywords that affect indentation."
