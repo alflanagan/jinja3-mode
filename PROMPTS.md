@@ -17,3 +17,5 @@ prompts). The prompts are in sequential order.
    the code. Write a brief commit message for the changes.
 5. Re-read @jinja2-mode.el and verify that issue 3 is now fixed, and
    write a brief commit message for all 3 fixes.
+6. Write documentation strings for functions in
+   @jinja2-mode.el which do not have any.
