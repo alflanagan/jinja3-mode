@@ -1,9 +1,11 @@
 ;;; jinja2-mode.el --- A major mode for jinja2 -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2011-2022 Florian Mounier aka paradoxxxzero
+;; Copyright (C) 2026 A Lloyd Flanagan
 
 ;; Original Author: Florian Mounier aka paradoxxxzero
 ;; Author: A Lloyd Flanagan <lloyd.flanagan@pm.me>
+;; Assisted-by: Claude:sonnet-4.6/opus-4.7
 ;; Version: 0.4
 
 ;; This program is free software: you can redistribute it and/or modify
@@ -47,11 +49,6 @@
   "Custom function names."
   :type '(repeat string)
   :group 'jinja2)
-
-;; (defcustom jinja2-debug nil
-;;   "Log indentation logic"
-;;   :type 'boolean
-;;   :group 'jinja2)
 
 (defun jinja2-closing-keywords ()
   "Return the list of Jinja2 block keywords that take an `end' counterpart.

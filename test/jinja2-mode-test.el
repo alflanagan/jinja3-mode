@@ -2,6 +2,9 @@
 
 ;; Copyright (C) 2026 A Lloyd Flanagan
 
+;; Author: A. Lloyd Flanagan <lloyd.flanagan@pm.me>
+;; Assisted-by: Claude:sonnet-4.6/opus-4.7
+
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
