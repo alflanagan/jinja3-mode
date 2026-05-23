@@ -126,7 +126,7 @@
              (format "{%% end%s%s %%}"
                      (car open-tag)(nth 1 open-tag))
            (format "{%% end%s %%}"
-                   (match-string 2))))
+                   (car open-tag))))
       (error "Nothing to close")))
   (save-excursion (jinja2-indent-line)))
 
