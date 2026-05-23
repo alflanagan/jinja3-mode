@@ -1,4 +1,4 @@
-;;; jinja2-mode.el --- A major mode for jinja2
+;;; jinja2-mode.el --- A major mode for jinja2 -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2011-2022 Florian Mounier aka paradoxxxzero
 
@@ -302,7 +302,7 @@
 (define-derived-mode jinja2-mode html-mode  "Jinja2"
   "Major mode for editing jinja2 files"
   :group 'jinja2
-  ;; Disabling this because of this emacs bug: 
+  ;; Disabling this because of this emacs bug:
   ;;  http://lists.gnu.org/archive/html/bug-gnu-emacs/2002-09/msg00041.html
   ;; (modify-syntax-entry ?\'  "\"" sgml-mode-syntax-table)
   (set (make-local-variable 'comment-start) "{#")
