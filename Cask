@@ -1,7 +1,7 @@
 (source gnu)
 (source melpa)
 
-(package-file "jinja2-mode.el")
+(package-file "jinja3-mode.el")
 
 (development
  (depends-on "buttercup"))
