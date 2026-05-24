@@ -323,7 +323,7 @@ These are highlighted with `font-lock-builtin-face' in `jinja3-mode'."
               default
             (if (bobp)
                 0
-              (jinja3-calculate-indent-backward default))))))))
+              (jinja3-calculate-indent-backward))))))))
 
 
 (defun jinja3-calculate-indent ()
